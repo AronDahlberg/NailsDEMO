@@ -1,4 +1,4 @@
-﻿namespace NailsDEMO
+﻿namespace NailsDEMO.Menu
 {
     internal abstract class BaseMenu (Simulation simulation)
     {

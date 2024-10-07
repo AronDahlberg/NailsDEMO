@@ -1,4 +1,4 @@
-﻿namespace NailsDEMO
+﻿namespace NailsDEMO.Menu
 {
     internal static class MenuHelper
     {
