@@ -5,7 +5,7 @@ namespace NailsDEMO
     internal class Simulation
     {
         public List<Human> Humans { get; set; }
-        private DateOnly CurrentDate { get; set; } = new(1, 1, 1);
+        public DateOnly Date { get; set; } = new DateOnly(1, 1, 1);
         private bool Running { get; set; } = true;
         private BaseMenu Menu { get; set; }
         public int AmountOfSimulationDays { get; set; } = 50;
@@ -32,8 +32,11 @@ namespace NailsDEMO
                 }
             }
 
+            Date = Date.AddDays(AmountOfSimulationDays);
+
             Console.Write(MenuHelper.ClearScreen +
-                $"{AmountOfSimulationDays} days have past\n" +
+                $"{AmountOfSimulationDays} days have passed\n" +
+                $"Current date is: {Date.ToLongDateString()}\n" +
                 $"Press any key to continue\n");
 
             Console.ReadKey();

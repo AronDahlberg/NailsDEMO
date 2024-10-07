@@ -6,7 +6,6 @@
         public List<Nail> FingerNails { get; set; } = [];
         public double DesiredNailLength { get; set; }
         public string Name { get; set; } = "";
-        private List<string> DailyMessages { get; set; } = [];
 
         public Human (string name, double desiredNailLength, double initialNailLength)
         {
@@ -43,10 +42,6 @@
             GrowNails();
 
             CutNails(DesiredNailLength);
-
-            DailyResult(DailyMessages);
-
-            DailyMessages.Clear();
         }
 
         private void GrowNails()
@@ -62,15 +57,12 @@
         }
         private void CutNails(double desiredNailLength)
         {
-            bool nailsCutToday = false;
 
             foreach (var nail in ToeNails)
             {
                 if (nail.NailLength > MaxNailLength())
                 {
                     nail.CutNail(desiredNailLength);
-
-                    nailsCutToday = true;
                 }
             }
             foreach (var nail in FingerNails)
@@ -78,28 +70,7 @@
                 if (nail.NailLength > MaxNailLength())
                 {
                     nail.CutNail(desiredNailLength);
-
-                    nailsCutToday = true;
                 }
-            }
-
-            if (nailsCutToday)
-            {
-                DailyMessages.Add($"{Name} cut their nails today!");
-            }
-        }
-        public void ShowHands()
-        {
-            foreach (var nail in FingerNails)
-            {
-                Console.WriteLine($"{Name}'s {nail}");
-            }
-        }
-        public void DailyResult(List<string> messages)
-        {
-            foreach (string message in messages)
-            {
-                Console.WriteLine(message);
             }
         }
         public double MaxNailLength() => DesiredNailLength + 2;
