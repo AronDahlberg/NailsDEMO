@@ -1,12 +1,10 @@
-﻿using static NailsDEMO.MenuHelper;
-
-namespace NailsDEMO
+﻿namespace NailsDEMO.Menu
 {
     internal class MainMenu(Simulation simulation) : BaseMenu(simulation)
     {
         public override void Run()
         {
-            Console.Write(ClearScreen +
+            Console.Write(MenuHelper.ClearScreen +
                 "1: Simulate amount of days\n" +
                 "2: Human Menu\n" +
                 "3: Exit\n");

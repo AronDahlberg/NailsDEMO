@@ -1,6 +1,4 @@
-﻿using static NailsDEMO.MenuHelper;
-
-namespace NailsDEMO
+﻿namespace NailsDEMO.Menu
 {
     internal class SimulationMenu(Simulation simulation) : BaseMenu(simulation)
     {

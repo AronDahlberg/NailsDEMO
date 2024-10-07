@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using NailsDEMO.Menu;
 
 namespace NailsDEMO
 {
