@@ -16,7 +16,7 @@
         }
         public override string ToString()
         {
-            return $"{Enum.GetName((NailPosition)NailPosition)} at {Enum.GetName((LimbPosition)NailLimbPosition)} limb has length {NailLength}";
+            return $"{Enum.GetName((NailPosition)NailPosition)} at {Enum.GetName((LimbPosition)NailLimbPosition)} limb has length {NailLength:F2} mm";
         }
     }
 }

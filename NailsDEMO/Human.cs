@@ -105,7 +105,7 @@
         public double MaxNailLength() => DesiredNailLength + 2;
         public override string ToString()
         {
-            return $"Name: {Name}, Desired Nail Length: {DesiredNailLength}";
+            return $"Name: {Name}, Desired Nail Length: {DesiredNailLength} mm";
         }
     }
 }
