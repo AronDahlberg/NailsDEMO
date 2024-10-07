@@ -6,9 +6,9 @@ namespace NailsDEMO
     {
         public override void Run()
         {
-            foreach (var human in simulation.Humans)
+            for (int i = 0; i < simulation.Humans.Count; i++)
             {
-                Console.WriteLine(human);
+                Console.WriteLine($"{i}: {simulation.Humans[i]}");
             }
 
             Console.Write(ClearScreen +
