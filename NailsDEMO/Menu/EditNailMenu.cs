@@ -10,7 +10,7 @@ namespace NailsDEMO.Menu
         {
             Console.Write(MenuHelper.ClearScreen +
                 $"b: Back\n" +
-                $"Current nail length: {ThisNail.NailLength}\n"+
+                $"Current nail length: {ThisNail.NailLength:F2}\n"+
                 $"Input new length of nail\n");
 
             string? input = Console.ReadLine();
