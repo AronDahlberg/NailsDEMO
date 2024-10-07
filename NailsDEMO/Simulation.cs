@@ -33,16 +33,14 @@ namespace NailsDEMO
                     human.SimulateNewDay();
                 }
 
-                try
-                {
-                    if (i % (AmountOfSimulationDays / 100) == 0)
-                    {
-                        completionPercentage = (double)i / (double)AmountOfSimulationDays;
+                double modulo = AmountOfSimulationDays < 100? 1 : (AmountOfSimulationDays / 100);
 
-                        SimulationHelper.PrintProgressBar(completionPercentage, 30);
-                    }
+                if (i % modulo == 0)
+                {
+                    completionPercentage = (double)i / (double)AmountOfSimulationDays;
+
+                    SimulationHelper.PrintProgressBar(completionPercentage, 30);
                 }
-                catch (DivideByZeroException) {}
             }
 
             Date = Date.AddDays(AmountOfSimulationDays);
