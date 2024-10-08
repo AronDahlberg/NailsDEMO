@@ -1,7 +1,4 @@
 ﻿using NailsDEMO.Menu;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Security.Cryptography;
-using System;
 
 namespace NailsDEMO
 {
@@ -65,13 +62,6 @@ namespace NailsDEMO
 
             PrintResult();
         }
-
-
-        //50 days has passed
-        //Current date....
-        //Human[]
-        //human.Name har klippt x gånger
-        //human.desiredLength
 
         private void PrintResult()
         {
