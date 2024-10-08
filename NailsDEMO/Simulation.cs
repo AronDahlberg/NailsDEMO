@@ -1,4 +1,7 @@
 ﻿using NailsDEMO.Menu;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Security.Cryptography;
+using System;
 
 namespace NailsDEMO
 {
@@ -39,7 +42,7 @@ namespace NailsDEMO
                     human.SimulateNewDay();
                 }
 
-                modulo = AmountOfSimulationDays < 100? 1 : (AmountOfSimulationDays / ProgressBar.Size);
+                modulo = AmountOfSimulationDays < 100 ? 1 : (AmountOfSimulationDays / ProgressBar.Size);
 
                 if (i % modulo == 0)
                 {
@@ -60,17 +63,35 @@ namespace NailsDEMO
                 Date = default;
             }
 
+            PrintResult();
+        }
+
+
+        //50 days has passed
+        //Current date....
+        //Human[]
+        //human.Name har klippt x gånger
+        //human.desiredLength
+
+        private void PrintResult()
+        {
             string dateMessage = Date != default
-                                ? Date.ToLongDateString()
-                                : "over year 9999";
+                                      ? Date.ToLongDateString()
+                                      : "over year 9999";
 
             Console.Write(
                 $"\n{AmountOfSimulationDays} days have passed\n" +
-                $"Current date is: {dateMessage}\n" +
-                $"Press any key to continue\n");
+                $"Current date is: {dateMessage}\n");
 
+            foreach(var human in Humans)
+            {
+                Console.WriteLine($"{human.Name} has cut the nails {human.AmountOfCuts} times.");
+            }
+
+            Console.Write($"Press any key to continue\n");
             Console.ReadKey();
         }
+
         public void ChangeMenu(BaseMenu menu)
         {
             Menu = menu;

@@ -8,6 +8,8 @@
         public string Name { get; set; } = "";
         private Random Random { get; set; } = new();
 
+        public int AmountOfCuts { get; set; }
+
         public Human (string name, double desiredNailLength, double initialNailLength)
         {
             Name = name;
@@ -64,6 +66,7 @@
                 if (nail.NailLength > MaxNailLength())
                 {
                     nail.CutNail(desiredNailLength);
+                    AmountOfCuts++;
                 }
             }
             foreach (var nail in FingerNails)
@@ -71,6 +74,7 @@
                 if (nail.NailLength > MaxNailLength())
                 {
                     nail.CutNail(desiredNailLength);
+                    AmountOfCuts++;
                 }
             }
         }
