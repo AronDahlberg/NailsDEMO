@@ -58,6 +58,7 @@ namespace NailsDEMO.Menu
 
             string header = String.Format(format, "ID", "Position", "Length mm");
 
+            Console.Write(header);
 
             for (int i = 0; i < header.Length; i++)
             {
