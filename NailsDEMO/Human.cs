@@ -6,6 +6,7 @@
         public List<Nail> FingerNails { get; set; } = [];
         public double DesiredNailLength { get; set; }
         public string Name { get; set; } = "";
+        private Random Random { get; set; } = new();
 
         public Human (string name, double desiredNailLength, double initialNailLength)
         {
@@ -48,11 +49,11 @@
         {
             foreach (var nail in ToeNails)
             {
-                nail.GrowNail();
+                nail.GrowNail(Random);
             }
             foreach (var nail in FingerNails)
             {
-                nail.GrowNail();
+                nail.GrowNail(Random);
             }
         }
         private void CutNails(double desiredNailLength)

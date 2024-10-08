@@ -8,9 +8,11 @@ namespace NailsDEMO
         public NailPosition NailPosition { get; set; } = nailPosition;
         public double NailLength { get; set; } = nailLength; // mm
 
-        public void GrowNail()
+        public void GrowNail(Random random)
         {
-            NailLength += 0.1;
+            double length = random.NextDouble() / 5;
+
+            NailLength += length;
         }
         public void CutNail(double desiredLength)
         {
