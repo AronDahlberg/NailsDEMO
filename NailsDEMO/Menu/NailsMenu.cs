@@ -13,8 +13,9 @@ namespace NailsDEMO.Menu
             DisplayNailTable();
 
             Console.Write(
-                "\nb: Back\n" +
-                "Input F or T + index of nail to edit it\n");
+                "\nInput F or T + index of nail to edit it\n" +
+                "b: Back\n" +
+                "> ");
 
             string? input = Console.ReadLine();
             int value; // used differently in multiple places

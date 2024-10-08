@@ -4,16 +4,18 @@
     {
         public override void Run()
         {
-            Console.Write(MenuHelper.ClearScreen +
-                "b: Back\n" +
-                "Input index of human to edit them\n" +
-                "Input 'd' + index of human to delete them\n" +
-                "Input 'a' to add human\n");
+            Console.Write(MenuHelper.ClearScreen);
 
             for (int i = 0; i < simulation.Humans.Count; i++)
             {
                 Console.WriteLine($"{i}: {simulation.Humans[i]}");
             }
+
+            Console.Write("Input index of human to edit them\n" +
+               "Input 'd' + index of human to delete them\n" +
+               "a: Add human\n" +
+               "b: Back\n" +
+               "> ");
 
             string? input = Console.ReadLine();
             int value; // used differently in multiple places
@@ -25,13 +27,13 @@
                 simulation.ChangeMenu(new MainMenu(simulation));
                 return;
             }
-            
+
             if (input == "a")
             {
                 simulation.ChangeMenu(new HumanCreationMenu(simulation));
                 return;
             }
-            
+
             if (int.TryParse(input, out value))
             {
                 var human = simulation.Humans.ElementAtOrDefault(value);
