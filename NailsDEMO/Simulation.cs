@@ -28,6 +28,8 @@ namespace NailsDEMO
             double completionPercentage;
             double modulo;
 
+            DateOnly startDate = new DateOnly(Date.Year, Date.Month, Date.Day);
+
             Console.Write(MenuHelper.ClearScreen);
 
             ProgressBar.PrintProgressBar(0);
@@ -60,18 +62,19 @@ namespace NailsDEMO
                 Date = default;
             }
 
-            PrintResult();
+            PrintResult(startDate);
         }
 
-        private void PrintResult()
+        private void PrintResult(DateOnly startDate)
         {
             string dateMessage = Date != default
                                       ? Date.ToLongDateString()
                                       : "over year 9999";
 
             Console.Write(
-                $"\n{AmountOfSimulationDays} days have passed\n" +
-                $"Current date is: {dateMessage}\n");
+                $"\nSimulation started {startDate.ToLongDateString()}" +
+                $"\nCurrent date is {dateMessage}" +
+                $"\nSimulation took {AmountOfSimulationDays} days\n\n");
 
             foreach(var human in Humans)
             {
