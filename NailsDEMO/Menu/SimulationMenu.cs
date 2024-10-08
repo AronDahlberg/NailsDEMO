@@ -5,10 +5,11 @@
         public override void Run()
         {
             Console.Write(MenuHelper.ClearScreen +
-                $"b: Back\n" +
                 $"r: Run\n" +
                 $"1: Edit amount of days to simulate, currently: {simulation.AmountOfSimulationDays}\n" +
-                $"2: Edit progress bar size, currently: {simulation.ProgressBar.Size}\n");
+                $"2: Edit progress bar size, currently: {simulation.ProgressBar.Size}\n" +
+                $"b: Back\n" +
+                "> ");
 
             string? input = Console.ReadLine();
             int value; // used differently in multiple places

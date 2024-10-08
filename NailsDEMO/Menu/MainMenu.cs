@@ -7,7 +7,8 @@
             Console.Write(MenuHelper.ClearScreen +
                 "1: Start Simulation\n" +
                 "2: Human Menu\n" +
-                "3: Exit\n");
+                "3: Exit\n" +
+                "> ");
 
             string? input = Console.ReadLine();
 

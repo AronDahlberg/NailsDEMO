@@ -6,12 +6,13 @@
         {
 
             Console.Write(MenuHelper.ClearScreen +
-                "b: Back\n" +
                 "Input three values:\n" +
                 "  Name (string)\n" +
                 "  Desired Nail Length (double, mm)\n" +
                 "  Initial Nail Length (double, mm)\n" +
-                "seperated by ':'\n");
+                "seperated by ':'\n" +
+                "b: Back\n" +
+                "> ");
 
             string input = Console.ReadLine() ?? "";
 

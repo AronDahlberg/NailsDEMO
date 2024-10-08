@@ -9,9 +9,10 @@ namespace NailsDEMO.Menu
         public override void Run()
         {
             Console.Write(MenuHelper.ClearScreen +
-                $"b: Back\n" +
                 $"Current nail length: {ThisNail.NailLength:F2}\n"+
-                $"Input new length of nail\n");
+                $"Input new length of nail\n" +
+                $"b: Back\n" +
+                "> ");
 
             string? input = Console.ReadLine();
 

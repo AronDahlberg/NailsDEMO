@@ -6,11 +6,13 @@
         public override void Run()
         {
             Console.Write(MenuHelper.ClearScreen +
-                $"b: Back\n" +
+
                 $"Input choice to edit values\n" +
                 $"0: Name = {ThisHuman.Name}\n" +
                 $"1: Desired Nail Length = {ThisHuman.DesiredNailLength}\n" +
-                $"2: Nails Menu\n");
+                $"2: Nails Menu\n" +
+                $"b: Back\n" +
+                "> ");
 
             string? input = Console.ReadLine();
 
