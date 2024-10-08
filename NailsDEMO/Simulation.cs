@@ -39,7 +39,7 @@ namespace NailsDEMO
                     human.SimulateNewDay();
                 }
 
-                modulo = AmountOfSimulationDays < 100? 1 : (AmountOfSimulationDays / 100);
+                modulo = AmountOfSimulationDays < 100? 1 : (AmountOfSimulationDays / ProgressBar.Size);
 
                 if (i % modulo == 0)
                 {

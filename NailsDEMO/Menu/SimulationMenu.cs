@@ -7,9 +7,11 @@
             Console.Write(MenuHelper.ClearScreen +
                 $"b: Back\n" +
                 $"r: Run\n" +
-                $"1: Edit amount of days to simulate (Currently: {simulation.AmountOfSimulationDays})\n");
+                $"1: Edit amount of days to simulate, currently: {simulation.AmountOfSimulationDays}\n" +
+                $"2: Edit progress bar size, currently: {simulation.ProgressBar.Size}\n");
 
             string? input = Console.ReadLine();
+            int value; // used differently in multiple places
 
             switch (input)
             {
@@ -18,9 +20,16 @@
                 case "r": simulation.Simulate(); break;
 
                 case "1":
-                    if (int.TryParse(MenuHelper.GetUserInput(), out int value))
+                    if (int.TryParse(MenuHelper.GetUserInput(), out value))
                     {
                         simulation.AmountOfSimulationDays = value;
+                    }
+                    break;
+
+                case "2":
+                    if (int.TryParse(MenuHelper.GetUserInput(), out value))
+                    {
+                        simulation.ProgressBar.Size = value;
                     }
                     break;
             }

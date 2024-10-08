@@ -15,7 +15,7 @@
                 Console.Write("*");
             }
             Console.Write("\x1b[38;2;255;25;25m");
-            for (int i = FillAmount; i < 30; i++)
+            for (int i = FillAmount; i < Size; i++)
             {
                 Console.Write("*");
             }
