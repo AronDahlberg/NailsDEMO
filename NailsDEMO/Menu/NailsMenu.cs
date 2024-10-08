@@ -5,50 +5,12 @@ namespace NailsDEMO.Menu
     internal class NailsMenu(Simulation simulation, Human human) : BaseMenu(simulation)
     {
         private Human ThisHuman { get; set; } = human;
+
         public override void Run()
         {
             Console.Write(MenuHelper.ClearScreen);
-
-            string format = "| {0,-2} | {1,-19} | {2,-9} |\n";
-
-            Console.Write(format, "ID", "Position", "Length mm");
-
-            for (int i = 0; i < 40; i++)
-            {
-                Console.Write("-");
-            }
-
-            Console.Write("\n");
-
-            for (int i = 0; i < ThisHuman.FingerNails.Count; i++)
-            {
-                string nailPosition = Enum.GetName((NailPosition)ThisHuman.FingerNails[i].NailPosition) ?? "";
-
-                nailPosition = Regex.Replace(nailPosition, "(?<!^)([A-Z])", " $1");
-
-                string posMessage = $"{Enum.GetName((LimbPosition)ThisHuman.FingerNails[i].NailLimbPosition)} {nailPosition}";
-
-                string lengthMessage = $"{ThisHuman.FingerNails[i].NailLength:F2}";
-
-                Console.Write(format, $"F{i}", posMessage, lengthMessage);
-            }
-            for (int i = 0; i < ThisHuman.ToeNails.Count; i++)
-            {
-                string nailPosition = Enum.GetName((NailPosition)ThisHuman.ToeNails[i].NailPosition) ?? "";
-
-                nailPosition = Regex.Replace(nailPosition, "(?<!^)([A-Z])", " $1");
-
-                string posMessage = $"{Enum.GetName((LimbPosition)ThisHuman.ToeNails[i].NailLimbPosition)} {nailPosition}";
-
-                string lengthMessage = $"{ThisHuman.ToeNails[i].NailLength:F2}";
-
-                Console.Write(format, $"T{i}", posMessage, lengthMessage);
-            }
-
-            for (int i = 0; i < 40; i++)
-            {
-                Console.Write("-");
-            }
+            
+            DisplayNailTable();
 
             Console.Write(
                 "\nb: Back\n" +
@@ -87,6 +49,47 @@ namespace NailsDEMO.Menu
                 }
 
                 return;
+            }
+        }
+
+        private void DisplayNailTable()
+        {
+            string format = "| {0,-2} | {1,-19} | {2,-9} |\n";
+
+            string header = String.Format(format, "ID", "Position", "Length mm");
+
+
+            for (int i = 0; i < header.Length; i++)
+            {
+                Console.Write("-");
+            }
+
+            Console.Write("\n");
+
+            PrintNails(ThisHuman.FingerNails, format);
+            PrintNails(ThisHuman.ToeNails, format);
+
+            for (int i = 0; i < 40; i++)
+            {
+                Console.Write("-");
+            }
+        }
+
+        private void PrintNails(List<Nail> nails, string format)
+        {
+            int index = 0;
+            foreach (Nail nail in nails)
+            {
+                string nailPosition = Enum.GetName((NailPosition)nail.NailPosition) ?? "";
+
+                nailPosition = Regex.Replace(nailPosition, "(?<!^)([A-Z])", " $1");
+
+                string posMessage = $"{Enum.GetName((LimbPosition)nail.NailLimbPosition)} {nailPosition}";
+
+                string lengthMessage = $"{nail.NailLength:F2}";
+
+                Console.Write(format, $"F{index}", posMessage, lengthMessage);
+                index++;
             }
         }
     }
