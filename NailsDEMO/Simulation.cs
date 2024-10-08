@@ -26,6 +26,7 @@ namespace NailsDEMO
         public void Simulate()
         {
             double completionPercentage;
+            double modulo;
 
             Console.Write(MenuHelper.ClearScreen);
 
@@ -38,7 +39,7 @@ namespace NailsDEMO
                     human.SimulateNewDay();
                 }
 
-                double modulo = AmountOfSimulationDays < 100? 1 : (AmountOfSimulationDays / 100);
+                modulo = AmountOfSimulationDays < 100? 1 : (AmountOfSimulationDays / 100);
 
                 if (i % modulo == 0)
                 {
