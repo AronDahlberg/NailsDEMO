@@ -9,8 +9,8 @@
                 "b: Back\n" +
                 "Input three values:\n" +
                 "  Name (string)\n" +
-                "  Desired Nail Length (double)\n" +
-                "  Initial Nail Length (double)\n" +
+                "  Desired Nail Length (double, mm)\n" +
+                "  Initial Nail Length (double, mm)\n" +
                 "seperated by ':'\n");
 
             string input = Console.ReadLine() ?? "";

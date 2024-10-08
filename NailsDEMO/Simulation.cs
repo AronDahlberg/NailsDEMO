@@ -9,6 +9,7 @@ namespace NailsDEMO
         private bool Running { get; set; } = true;
         private BaseMenu Menu { get; set; }
         public int AmountOfSimulationDays { get; set; } = 50;
+        public ProgressBar ProgressBar { get; set; } = new(30);
 
         public Simulation(List<Human> humans)
         {
@@ -26,6 +27,10 @@ namespace NailsDEMO
         {
             double completionPercentage;
 
+            Console.Write(MenuHelper.ClearScreen);
+
+            ProgressBar.PrintProgressBar(0);
+
             for (int i = 0; i < AmountOfSimulationDays; i++)
             {
                 foreach (Human human in Humans)
@@ -39,15 +44,28 @@ namespace NailsDEMO
                 {
                     completionPercentage = (double)i / (double)AmountOfSimulationDays;
 
-                    SimulationHelper.PrintProgressBar(completionPercentage, 30);
+                    ProgressBar.PrintProgressBar(completionPercentage);
                 }
             }
 
-            Date = Date.AddDays(AmountOfSimulationDays);
+            ProgressBar.PrintProgressBar(1);
 
-            Console.Write(MenuHelper.ClearScreen +
-                $"{AmountOfSimulationDays} days have passed\n" +
-                $"Current date is: {Date.ToLongDateString()}\n" +
+            try
+            {
+                Date = Date.AddDays(AmountOfSimulationDays);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Date = default;
+            }
+
+            string dateMessage = Date != default
+                                ? Date.ToLongDateString()
+                                : "over year 9999";
+
+            Console.Write(
+                $"\n{AmountOfSimulationDays} days have passed\n" +
+                $"Current date is: {dateMessage}\n" +
                 $"Press any key to continue\n");
 
             Console.ReadKey();
