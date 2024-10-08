@@ -15,7 +15,7 @@ namespace NailsDEMO.Menu
 
             string? input = Console.ReadLine();
 
-            if (input == null) { return; }
+            if (input == null || !input.Any()) { return; }
 
             if (input == "b")
             {

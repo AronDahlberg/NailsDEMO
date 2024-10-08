@@ -14,7 +14,7 @@
 
             string? input = Console.ReadLine();
 
-            if (input == null) { return; }
+            if (input == null || !input.Any()) { return; }
 
             switch (input)
             {

@@ -1,27 +1,63 @@
-﻿namespace NailsDEMO.Menu
+﻿using System.Text.RegularExpressions;
+
+namespace NailsDEMO.Menu
 {
     internal class NailsMenu(Simulation simulation, Human human) : BaseMenu(simulation)
     {
         private Human ThisHuman { get; set; } = human;
         public override void Run()
         {
-            Console.Write(MenuHelper.ClearScreen +
-                "b: Back\n" +
-                "Input F or T + index of nail to edit it\n");
+            Console.Write(MenuHelper.ClearScreen);
+
+            string format = "| {0,-2} | {1,-19} | {2,-9} |\n";
+
+            Console.Write(format, "ID", "Position", "Length mm");
+
+            for (int i = 0; i < 40; i++)
+            {
+                Console.Write("-");
+            }
+
+            Console.Write("\n");
 
             for (int i = 0; i < ThisHuman.FingerNails.Count; i++)
             {
-                Console.WriteLine($"F{i}: {ThisHuman.FingerNails[i]}");
+                string nailPosition = Enum.GetName((NailPosition)ThisHuman.FingerNails[i].NailPosition) ?? "";
+
+                nailPosition = Regex.Replace(nailPosition, "(?<!^)([A-Z])", " $1");
+
+                string posMessage = $"{Enum.GetName((LimbPosition)ThisHuman.FingerNails[i].NailLimbPosition)} {nailPosition}";
+
+                string lengthMessage = $"{ThisHuman.FingerNails[i].NailLength:F2}";
+
+                Console.Write(format, $"F{i}", posMessage, lengthMessage);
             }
             for (int i = 0; i < ThisHuman.ToeNails.Count; i++)
             {
-                Console.WriteLine($"T{i}: {ThisHuman.ToeNails[i]}");
+                string nailPosition = Enum.GetName((NailPosition)ThisHuman.ToeNails[i].NailPosition) ?? "";
+
+                nailPosition = Regex.Replace(nailPosition, "(?<!^)([A-Z])", " $1");
+
+                string posMessage = $"{Enum.GetName((LimbPosition)ThisHuman.ToeNails[i].NailLimbPosition)} {nailPosition}";
+
+                string lengthMessage = $"{ThisHuman.ToeNails[i].NailLength:F2}";
+
+                Console.Write(format, $"T{i}", posMessage, lengthMessage);
             }
+
+            for (int i = 0; i < 40; i++)
+            {
+                Console.Write("-");
+            }
+
+            Console.Write(
+                "\nb: Back\n" +
+                "Input F or T + index of nail to edit it\n");
 
             string? input = Console.ReadLine();
             int value; // used differently in multiple places
 
-            if (input == null) { return; }
+            if (input == null || !input.Any()) { return; }
 
             if (input == "b")
             {

@@ -18,7 +18,7 @@
             string? input = Console.ReadLine();
             int value; // used differently in multiple places
 
-            if (input == null) { return; }
+            if (input == null || !input.Any()) { return; }
 
             if (input == "b")
             {

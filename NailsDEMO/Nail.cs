@@ -1,4 +1,6 @@
-﻿namespace NailsDEMO
+﻿using System.Text.RegularExpressions;
+
+namespace NailsDEMO
 {
     internal class Nail (LimbPosition limbposition, NailPosition nailPosition, double nailLength)
     {
@@ -13,10 +15,6 @@
         public void CutNail(double desiredLength)
         {
             NailLength = desiredLength;
-        }
-        public override string ToString()
-        {
-            return $"{Enum.GetName((NailPosition)NailPosition)} at {Enum.GetName((LimbPosition)NailLimbPosition)} limb has length {NailLength:F2} mm";
         }
     }
 }
