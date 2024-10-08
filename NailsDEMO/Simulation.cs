@@ -28,6 +28,8 @@ namespace NailsDEMO
             double completionPercentage;
             double modulo;
 
+            DateOnly startDate = new DateOnly(Date.Year, Date.Month, Date.Day);
+
             Console.Write(MenuHelper.ClearScreen);
 
             ProgressBar.PrintProgressBar(0);
@@ -39,7 +41,7 @@ namespace NailsDEMO
                     human.SimulateNewDay();
                 }
 
-                modulo = AmountOfSimulationDays < 100? 1 : (AmountOfSimulationDays / ProgressBar.Size);
+                modulo = AmountOfSimulationDays < 100 ? 1 : (AmountOfSimulationDays / ProgressBar.Size);
 
                 if (i % modulo == 0)
                 {
@@ -60,17 +62,38 @@ namespace NailsDEMO
                 Date = default;
             }
 
+            PrintResult(startDate);
+            ResetCutCounter();
+        }
+
+        private void ResetCutCounter()
+        {
+            foreach(var human in Humans)
+            {
+                human.AmountOfCuts = 0;
+            }
+        }
+
+        private void PrintResult(DateOnly startDate)
+        {
             string dateMessage = Date != default
-                                ? Date.ToLongDateString()
-                                : "over year 9999";
+                                      ? Date.ToLongDateString()
+                                      : "over year 9999";
 
             Console.Write(
-                $"\n{AmountOfSimulationDays} days have passed\n" +
-                $"Current date is: {dateMessage}\n" +
-                $"Press any key to continue\n");
+                $"\nSimulation started {startDate.ToLongDateString()}" +
+                $"\nCurrent date is {dateMessage}" +
+                $"\nSimulation took {AmountOfSimulationDays} days\n\n");
 
+            foreach(var human in Humans)
+            {
+                Console.WriteLine($"{human.Name} has cut the nails {human.AmountOfCuts} times.");
+            }
+
+            Console.Write($"Press any key to continue\n");
             Console.ReadKey();
         }
+
         public void ChangeMenu(BaseMenu menu)
         {
             Menu = menu;
