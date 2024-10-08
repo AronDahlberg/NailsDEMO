@@ -63,6 +63,15 @@ namespace NailsDEMO
             }
 
             PrintResult(startDate);
+            ResetCutCounter();
+        }
+
+        private void ResetCutCounter()
+        {
+            foreach(var human in Humans)
+            {
+                human.AmountOfCuts = 0;
+            }
         }
 
         private void PrintResult(DateOnly startDate)
