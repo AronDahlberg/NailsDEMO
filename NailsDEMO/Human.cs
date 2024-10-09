@@ -125,9 +125,9 @@
         public override string ToString()
         {
             return $"Name: {Name}\n" +
-                $"Age: {Age.Year} years\n" +
-                $"Reincarnations: {Incarnation}\n" +
-                $"Desired Nail Length: {DesiredNailLength} mm";
+                $"    Age: {Age.Year} years\n" +
+                $"    Reincarnations: {Incarnation}\n" +
+                $"    Desired Nail Length: {DesiredNailLength} mm";
         }
     }
 }
