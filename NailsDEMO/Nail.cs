@@ -14,9 +14,5 @@ namespace NailsDEMO
 
             NailLength += length;
         }
-        public void CutNail(double desiredLength)
-        {
-            NailLength = desiredLength;
-        }
     }
 }
