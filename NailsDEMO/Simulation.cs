@@ -87,7 +87,12 @@ namespace NailsDEMO
 
             foreach(var human in Humans)
             {
-                Console.WriteLine($"{human.Name} has cut the nails {human.AmountOfCuts} times.");
+                Console.WriteLine($"{human.Name} cut their nails {human.AmountOfCuts} times.");
+                Console.WriteLine("Death log");
+                foreach(var log in human.DeathLog)
+                {
+                    Console.WriteLine(log);
+                }
             }
 
             Console.Write($"Press any key to continue\n");
