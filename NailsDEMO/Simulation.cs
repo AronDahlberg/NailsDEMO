@@ -88,11 +88,18 @@ namespace NailsDEMO
             foreach(var human in Humans)
             {
                 Console.WriteLine($"{human.Name} cut their nails {human.AmountOfCuts} times.");
-                Console.WriteLine("Death log");
+                Console.WriteLine($"Death log for {human.Name}: ");
+
+                if (human.DeathLog.Count == 0)
+                {
+                    Console.WriteLine($"    {human.Name} never died");
+                }
                 foreach(var log in human.DeathLog)
                 {
-                    Console.WriteLine(log);
+                    Console.WriteLine($"    {log}");
                 }
+
+                Console.Write("\n");
             }
 
             Console.Write($"Press any key to continue\n");
